@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>   
+
+    <link href="bootstrap.css rel="stylesheet>
+    <script   src="http://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.4.2/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.4.2/js/tabulator.min.js"></script>
+    <script src="my_sneakers.js"></script>
+    
+</head>
+<body style="padding-top: 5rem;">
+    <main role="main" class="container">
+      <h1>Your owned sneakers</h1>           
+        <div class="container welcome-div">      
+          <div id="sneaker-table"></div>   
+          <div class="text-center mt-3">     
+            <button class="button btn-lg btn-primary" type="type" name="download" id="download-button">Download Data</button>   
+          </div>     
+      </div>   
+    </main>  
+  
+      <script type="text/javascript">          
+      $("#sneaker-table").tabulator({     
+        layout:"fitColumns", //fit columns to width of table (optional)
+        tooltips:true, // set tooltips to true or false   
+        pagination:"local", //'local' or 'remote'. local loads all the data and then paginate while remote loads upon ajax call
+        paginationSize:7, // number of rows before applying pagination
+        movableColumns:true, // allows columns to be moved around
+        resizableRows:true, // allows rows to be resize'  
+          columns:[ //Define Table Columns
+              {title:"Brand", field:"Brand", width:150},
+              {title:"Style", field:"Style"},
+              {title:"Color", field:"Color", align:"left", formatter:"progress"},
+              {title:"Price", field:"Price"},
+              {title:"Date", field:"Date", sorter:"date"},
+          ],        
+      });
+
+      var localdata = sneakers
+
+      $("#sneaker-table").tabulator("setData",localdata);      
+  
+        $("#download-button").on("click", function(){
+          $("#sneaker-table").tabulator("download", "csv", "Your owned sneakers.csv");
+      });
+      </script>  
+  </body>
+  </html>
