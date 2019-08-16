@@ -175,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero .btn-services {
   border: 2px solid #fff;
-  color: #fff;
+  color: #03C4EB;
 }
 
 #hero .btn-services:hover {
@@ -525,6 +525,27 @@ body.mobile-nav-active #mobile-nav-toggle {
 #about .about-text:last-child {
   margin-bottom: 0;
 }
+#about .subscribe-btn {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 2px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #03C4EB;
+  color: #03C4EB;
+  background: #fff;
+}
+
+#about .subscribe-btn:hover {
+  background: #03C4EB;
+  border: 2px solid #03C4EB;
+  color: #fff;
+}
 
 /* Services Section
 --------------------------------*/
@@ -579,7 +600,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* Subscribe Section
 --------------------------------*/
 #subscribe {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/subscribe-bg.jpg) fixed center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/nike.jpeg) fixed center center;
   background-size: cover;
   padding: 80px 0;
 }
@@ -854,6 +875,71 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #contact .form button[type="submit"]:hover {
   background: #25d8fc;
+}
+
+body{
+  height: 100vh;
+  text-align: center;
+}
+  /*Trigger Button*/
+.login-trigger {
+  font-weight: bold;
+  color: #fff;
+  /* background: linear-gradient(to bottom right, #B05574, #F87E7B); */
+  padding: 15px 30px;
+  border-radius: 30px;
+  position: relative; 
+  top: 50%;
+}
+
+/*Modal*/
+h4 {
+  font-weight: bold;
+  color: #fff;
+}
+.close {
+  /* color: #fff; */
+  transform: scale(1.2)
+}
+.modal-content {
+  font-weight: bold;
+}
+.form-control {
+  margin: 1em 0;
+}
+.form-control:hover, .form-control:focus {
+  box-shadow: none;  
+  /* border-color: #fff; */
+}
+.username, .password {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  /* border-bottom: 2px solid #eee; */
+  padding-left: 0;
+  font-weight: normal;
+  background: transparent;  
+}
+.form-control::-webkit-input-placeholder {
+  /* color: #eee;   */
+}
+.form-control:focus::-webkit-input-placeholder {
+  font-weight: bold;
+  color: #fff;
+}
+.login {
+  padding: 6px 20px;
+  border-radius: 20px;
+  background: none;
+  /* border: 2px solid #FAB87F; */
+  /* color: #FAB87F; */
+  font-weight: bold;
+  transition: all .5s;
+  margin-top: 1em;
+}
+.login:hover {
+  /* background: #FAB87F; */
+  color: #fff;
 }
 
 /*--------------------------------------------------------------

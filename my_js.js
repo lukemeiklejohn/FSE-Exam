@@ -1,33 +1,68 @@
+//Custom filter example
+function customFilter(data){
+  return data.car && data.rating < 3;
+}
+
+//Trigger setFilter function with correct parameters
+function updateFilter(){
+
+  var filter = $("#filter-field").val() == "function" ? customFilter : $("#filter-field").val();
+
+  if($("#filter-field").val() == "function" ){
+      $("#filter-type").prop("disabled", true);
+      $("#filter-value").prop("disabled", true);
+  }else{
+      $("#filter-type").prop("disabled", false);
+      $("#filter-value").prop("disabled", false);
+  }
+
+  $("#sneaker-table").tabulator("setFilter", filter, "like", $("#filter-value").val());
+}
+
+//Update filters on value change
+$("#filter-field, #filter-type").change(updateFilter);
+$("#filter-value").keyup(updateFilter);
+
+//Clear filters on "Clear Filters" button click
+$("#filter-clear").click(function(){
+  $("#filter-field").val("");
+  $("#filter-type").val("=");
+  $("#filter-value").val("");
+
+  $("#sneaker-table").tabulator("clearFilter");
+});
+
 $("#sneaker-table").tabulator({     
   layout:"fitColumns", //fit columns to width of table (optional)
   tooltips:true, // set tooltips to true or false   
   pagination:"local", //'local' or 'remote'. local loads all the data and then paginate while remote loads upon ajax call
-  paginationSize:7, // number of rows before applying pagination
+  paginationSize:10, // number of rows before applying pagination
   movableColumns:true, // allows columns to be moved around
   resizableRows:true, // allows rows to be resize'  
     columns:[ //Define Table Columns
-        {title:"Brand", field:"Brand", width:150},
-        {title:"Style", field:"Style"},
-        {title:"Color", field:"Color", align:"left"},
-        {title:"Price", field:"Price"},
-        {title:"Date", field:"Date", sorter:"date"},
+        {title:"Brand", field:"Brand", width:150, validator:["required","minLength:4"]},
+        {title:"Style", field:"Style", validator:["required","minLength:4"]},
+        {title:"Color", field:"Color", align:"left", validator:["required","minLength:3"]},
+        {title:"Price", field:"Price", validator:["required","integer", "minLength:2"]},
+        {title:"Date", field:"Date", sorter:"date", validator:"required"},
     ],        
 });
 
 var localdata = sneakers
-
 $("#sneaker-table").tabulator("setData",localdata);      
 
   $("#download-button").on("click", function(){
     $("#sneaker-table").tabulator("download", "csv", "Your owned sneakers.csv");
 });
 
-$(document).ready(function() {
-  $("#btn").click(function(e){
-    //  var jsonData = localdata;
-   var formData = $("#myform").serializeArray();
+
+document.getElementById("btn").addEventListener("click", function(e){
+  var formData = $("#myform").serializeArray();
+  // var isValid = $("#myform").isValid();
+  
   console.log(formData);
 
+  
   var returnArray = {};
   for (var i = 0; i < formData.length; i++){
     returnArray[formData[i]['name']] = formData[i]['value'];
@@ -36,62 +71,53 @@ $(document).ready(function() {
   
   console.log('returnArray',returnArray)
   localdata[localdata.length] = returnArray
-  //  $.each(returnArray, function() {
-  //       if (jsonData[this.name]) {
-  //          if (!jsonData[this.name].push) {
-  //              jsonData[this.name] = [jsonData[this.name]];
-  //          }
-  //          jsonData[this.name].push(this.value || '');
-  //      } else {
-  //          jsonData[this.name] = this.value || '';
-  //      }
+  $("#sneaker-table").tabulator("setData",localdata)
 
 
-  //  });
    console.log(localdata[localdata.length-1])
    console.log(localdata);
-    // $.ajax(
-    // {
-    //     url : "action.php",
-    //     type: "POST",
-    //     data : jsonData,
-
-    // });
-    e.preventDefault(); 
-});
 });
 
-// const form = document.querySelector('form')
-// const ul = document.querySelector('ul')
-// const button = document.querySelector('button')
-// const input = document.getElementById('item')
-// let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
 
-// localStorage.setItem('items', JSON.stringify(itemsArray))
-// const data = JSON.parse(localStorage.getItem('items'))
+// $(document).ready(function() {
+//   $("#btn").click(function(e){
+    
+//   var formData = $("#myform").serializeArray();
+  
+//   console.log(formData);
 
-// const liMaker = text => {
-//   const li = document.createElement('li')
-//   li.textContent = text
-//   ul.appendChild(li)
-// }
-
-// form.addEventListener('submit', function(e) {
-//   e.preventDefault()
-
-//   itemsArray.push(input.value)
-//   localStorage.setItem('items', JSON.stringify(itemsArray))
-//   liMaker(input.value)
-//   input.value = ''
-// })
-
-// data.forEach(item => {
-//   liMaker(item)
-// })
-
-// button.addEventListener('click', function() {
-//   localStorage.clear()
-//   while (ul.firstChild) {
-//     ul.removeChild(ul.firstChild)
+  
+//   var returnArray = {};
+//   for (var i = 0; i < formData.length; i++){
+//     returnArray[formData[i]['name']] = formData[i]['value'];
 //   }
-// })
+
+  
+//   console.log('returnArray',returnArray)
+//   localdata[localdata.length] = returnArray
+//   $("#sneaker-table").tabulator("setData",localdata)
+//   //  $.each(returnArray, function() {
+//   //       if (jsonData[this.name]) {
+//   //          if (!jsonData[this.name].push) {
+//   //              jsonData[this.name] = [jsonData[this.name]];
+//   //          }
+//   //          jsonData[this.name].push(this.value || '');
+//   //      } else {
+//   //          jsonData[this.name] = this.value || '';
+//   //      }
+
+
+//   //  });
+//    console.log(localdata[localdata.length-1])
+//    console.log(localdata);
+//     // $.ajax(
+//     // {
+//     //     url : "action.php",
+//     //     type: "POST",
+//     //     data : jsonData,
+
+//     // });
+//     e.preventDefault(); 
+// });
+// });
+

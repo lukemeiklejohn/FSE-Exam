@@ -34,12 +34,13 @@
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script> 
-
     <script   src="http://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
     <script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.4.2/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.4.2/js/tabulator.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     <script src="my_sneakers.js"></script>
+
 
   <!-- =======================================================
     Theme Name: Imperial
@@ -67,7 +68,7 @@
         <h2>Your shoes are <span class="rotating">smart, stylish, sexy</span>. <br> So why aren't they online?</h2>
         <div class="actions">
           <a href="#about" class="btn-get-started">View Your Collection</a>
-          <a href="#services" class="btn-services">Add New Sneakers</a>
+          <a href="#contact" class="btn-services">Add New Sneakers</a>
         </div>
       </div>
     </div>
@@ -89,29 +90,8 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Home</a></li>
           <li><a href="#about">Your Collection</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#team">Team</a></li>
-          <li class="menu-has-children"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
+          <li><a href="#contact">Add New Sneakers</a></li>
+          </ul>
       </nav>
       <!-- #nav-menu-container -->
     </div>
@@ -130,15 +110,32 @@
       </div>
     </div>
     <div class="container about-container wow fadeInUp">
-      <div class="row">
+      <div class="text-right mt-3">
 
-          <div class="container welcome-div">      
-              <div id="sneaker-table"></div> 
-          </br> 
-              <div class="text-center mt-3">     
-                <button class="button btn-lg btn-primary" type="type" name="download" id="download-button">Download Data</button>   
-              </div>     
+        <div class="wow fadeIn">
+            <span>
+              <label>Field: </label>
+              <select id="filter-field">
+                  <option></option>
+                  <option value="Brand">Brand</option>
+                  <option value="Style">Style</option>
+                  <option value="Color">Color</option>
+                  <option value="rating">Rating</option>
+              </select>
+            </span>
+
+              <span><label>Value: </label> <input id="filter-value" type="text" placeholder="value to search for"></span>
+
+              <button id="filter-clear" class="subscribe-btn">Clear Filter</button>
+            <span></span>
         </div>
+        <div class="hero-container">      
+            <div id="sneaker-table"></div> 
+        </br> 
+            <div class="text-center mt-3">     
+              <a href="#about" class="subscribe-btn" type="type" name="download" id="download-button">Download Data</a>
+            </div>     
+      </div>
       </div>
     </div>
   </section>
@@ -157,33 +154,46 @@
         </div>        
         
   
-          <div class="col-md-5 col-md-push-2">
-            <div class="form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
-              <div id="errormessage"></div>
-              <form action="" type="post" method="post" role="form" class="contactForm">
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+        <div class="col-md-5 col-md-push-2">
+          <div class="form">
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form id="myform" type="post" method="post" role="form" class="contactForm">
+              <fieldset>
+              <div class="form-group">
+                <label for="Brand">Brand: </label>
+                <input type="text" name="brand" class="form-control" id="Brand" data-rule="minlen:4" data-msg="Please enter the brand name" placeholder="Enter the brand of the shoe"/>
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <label for="Style">Style: </label>
+                <input type="text" class="form-control" name="style" id="Style" data-rule="minlen:3" data-msg="Please enter the style of the sneaker" placeholder="Enter the style of the shoe"/>
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <label for="Color">Color: </label>
+                <input type="text" class="form-control" name="color" id="Color" data-rule="minlen:3" data-msg="Please enter the color of your sneakers" placeholder="Enter the color of the shoe" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                  <label for="Price">Price: </label>
+                  <input type="number" class="form-control" name="price" id="Price" data-rule="minlen:2" data-msg="Please enter the price you paid" placeholder="Enter the price of the shoe" />
                   <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit" value="Submit">Send Message</button></div>
-              </form>
-            </div>
+              </div>
+              <div class="form-group">
+                <label for="Date">Date purchased: </label>
+                <input type="date" class="form-control" name="Date" id="Date" data-rule="minlen:1" data-msg="Please enter the date you purchased your sneakers" />
+                <div class="validation"></div>
+              </div>
+              <div class="text-center"><button type="submit" id="btn" class="btn" value="Submit">Add New Sneakers</button></div>
+            </fieldset>
+            </form>
+          </div>
+
             
             
-            <form id="myform" type="post">
+            
+            <!-- <form id=" type="post">
               <fieldset>
                 <legend>Ajax Form  </legend>
                 <p>We would love to hear from you. Please fill out this form</p>
@@ -214,27 +224,49 @@
                 </div>
                 <span class="elements">Press "Ctrl + Shift + J" to see sent JSON in console: <span>
               </fieldset>
-            </form>
+            </form> -->
 
           </div>
+
+          <div class="col-md-5 col-md-push-2">
+            <br>
+            <br>
+            <img src="img/sneaker.gif" height="350">
+          </div>
+          <div></div>
   
         </div>
       </div>
     </section>
 
   <!--==========================
-  Subscrbe Section
+  Subscribe Section
   ============================-->
   <section id="subscribe">
     <div class="container wow fadeInUp">
       <div class="row">
         <div class="col-md-8">
           <h3 class="subscribe-title">Subscribe For Updates</h3>
-          <p class="subscribe-text">Join our 1000+ subscribers and get access to the latest tools, freebies, product announcements and much more!</p>
+          <p class="subscribe-text">Stayed up to date with the latest developments - be the first to hear about our upcoming ICO!</p>
         </div>
-        <div class="col-md-4 subscribe-btn-container">
-          <a class="subscribe-btn" href="#">Subscribe Now</a>
+        <a class="subscribe-btn" href="#" data-target="#login" data-toggle="modal">Subscribe</a>
+
+        <div id="login" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            
+            <div class="modal-content">
+              <div class="modal-body">
+                <button data-dismiss="modal" class="close">&times;</button>
+                <h4>Login</h4>
+                <form>
+                  <input type="text" class="username form-control" placeholder="Enter your email address here"/>
+                  <input class="subscribe-btn" type="submit" value="Subscribe" />
+                </form>
+              </div>
+            </div>
+          </div>  
         </div>
+        
       </div>
     </div>
   </section>
