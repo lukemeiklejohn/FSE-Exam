@@ -27,31 +27,6 @@
           </div>     
       </div>   
     </main>  
-  
-      <script type="text/javascript">          
-      $("#sneaker-table").tabulator({     
-        layout:"fitColumns", //fit columns to width of table (optional)
-        tooltips:true, // set tooltips to true or false   
-        pagination:"local", //'local' or 'remote'. local loads all the data and then paginate while remote loads upon ajax call
-        paginationSize:7, // number of rows before applying pagination
-        movableColumns:true, // allows columns to be moved around
-        resizableRows:true, // allows rows to be resize'  
-          columns:[ //Define Table Columns
-              {title:"Brand", field:"Brand", width:150},
-              {title:"Style", field:"Style"},
-              {title:"Color", field:"Color", align:"left", formatter:"progress"},
-              {title:"Price", field:"Price"},
-              {title:"Date", field:"Date", sorter:"date"},
-          ],        
-      });
-
-      var localdata = sneakers
-
-      $("#sneaker-table").tabulator("setData",localdata);      
-  
-        $("#download-button").on("click", function(){
-          $("#sneaker-table").tabulator("download", "csv", "Your owned sneakers.csv");
-      });
-      </script>  
+    <script type="text/javascript" src="my_js.js"></script> 
   </body>
   </html>
