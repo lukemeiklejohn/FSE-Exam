@@ -39,13 +39,14 @@ $("#sneaker-table").tabulator({
   paginationSize:10, // number of rows before applying pagination
   movableColumns:true, // allows columns to be moved around
   resizableRows:true, // allows rows to be resize'  
-    columns:[ //Define Table Columns
-        {title:"Brand", field:"Brand", width:150, validator:["required","minLength:4"]},
-        {title:"Style", field:"Style", validator:["required","minLength:4"]},
-        {title:"Color", field:"Color", align:"left", validator:["required","minLength:3"]},
-        {title:"Price", field:"Price", validator:["required","integer", "minLength:2"]},
-        {title:"Date", field:"Date", sorter:"date", validator:"required"},
-    ],        
+  columns:[ //Define Table Columns
+      {title:"Brand", field:"Brand", width:150, validator:["string","required","minLength:4"]},
+      {title:"Style", field:"Style", validator:["string","required","minLength:4"]},
+      {title:"Color", field:"Color", align:"left", validator:["string","required","minLength:3"]},
+      {title:"Price", field:"Price", validator:["required","integer", "min:0"]},
+      {title:"Date", field:"Date", sorter:"date", validator:"required"},
+  ],  
+        
 });
 
 var localdata = sneakers
@@ -64,18 +65,23 @@ document.getElementById("btn").addEventListener("click", function(e){
 
   
   var returnArray = {};
+  var invalidForm = 0
   for (var i = 0; i < formData.length; i++){
     returnArray[formData[i]['name']] = formData[i]['value'];
+    if(formData[i]['value'].length == 0) {invalidForm+=1};
   }
 
-  
   console.log('returnArray',returnArray)
   localdata[localdata.length] = returnArray
-  $("#sneaker-table").tabulator("setData",localdata)
+  
+  if(invalidForm == 0) {
+    $("#sneaker-table").tabulator("setData",localdata)
 
 
-   console.log(localdata[localdata.length-1])
-   console.log(localdata);
+    console.log(localdata[localdata.length-1])
+    console.log(localdata);
+  }
+  
 });
 
 
