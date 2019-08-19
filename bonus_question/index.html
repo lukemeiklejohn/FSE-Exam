@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Your Sneaker Collection</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  
+  <link href="favicon.ico" rel="shortcut icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Libraries CSS Files -->
+  <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/lib/animate-css/animate.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Main Stylesheet File -->
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+  <!-- JQuery and JQuery-ui, custom script -->
+  <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script> 
+    <script   src="http://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="   crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.4.2/css/tabulator.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/3.4.2/js/tabulator.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+    <script src="my_sneakers.js"></script>
+
+
+  <!-- =======================================================
+    Theme Name: Imperial
+    Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+
+<body> 
+
+  <div id="preloader"></div>
+
+  <!--==========================
+  Hero Section
+  ============================-->
+  <section id="hero">
+    <div class="hero-container">
+      <div class="wow fadeIn">
+        <div class="hero-logo">
+          <img class="" src="/img/logo.png" alt="SneakerCo.io" height="150px">
+        </div>
+
+        <h1>Welcome to your collection</h1>
+        <h2>Your shoes are <span class="rotating">smart, stylish, sexy</span>. <br> So why aren't they online?</h2>
+        <div class="actions">
+          <a href="#about" class="btn-get-started">View Your Collection</a>
+          <a href="#contact" class="btn-services">Add New Sneakers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--==========================
+  Header Section
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a href="#hero"><img src="/img/logo.png" alt="" title="" /></img></a>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="#hero">Home</a></li>
+          <li><a href="#about">Your Collection</a></li>
+          <li><a href="#contact">Add New Sneakers</a></li>
+          </ul>
+      </nav>
+      <!-- #nav-menu-container -->
+    </div>
+  </header>
+  <!-- #header -->
+
+  <!--==========================
+  View Your Collection Section
+  ============================-->
+  <section id="about">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="section-title">Your Collection</h3>
+          <div class="section-title-divider"></div>
+      </div>
+    </div>
+    <div class="container about-container wow fadeInUp">
+      <div class="text-right mt-3">
+
+        <div class="wow fadeIn">
+            <span>
+              <label>Field: </label>
+              <select id="filter-field">
+                  <option></option>
+                  <option value="Brand">Brand</option>
+                  <option value="Style">Style</option>
+                  <option value="Color">Color</option>
+              </select>
+            </span>
+
+              <span><label>Value: </label> <input id="filter-value" type="text" placeholder="value to search for"></span>
+
+              <button id="filter-clear" class="subscribe-btn">Clear Filter</button>
+            <span></span>
+        </div>
+        <div class="hero-container">      
+            <div id="sneaker-table"></div> 
+        </br> 
+            <div class="text-center mt-3">     
+              <a href="#about" class="subscribe-btn" type="type" name="download" id="download-button">Download Data</a>
+            </div>     
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!--==========================
+  Adding new Sneaker Section
+  ============================-->
+  <section id="contact">
+      <div class="container wow fadeInUp">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="section-title">Add new sneakers</h3>
+            <div class="section-title-divider"></div>
+            <p class="section-description">Proud of your new purchase? Add them to your database now to ensure you can always keep track of your collection.</p>
+          </div>
+        </div>        
+        
+  
+        <div class="col-md-5 col-md-push-2">
+          <div class="form">
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form id="myform" type="post" method="post" role="form" class="contactForm">
+              <fieldset>
+              <div class="form-group">
+                <label for="Brand">Brand: </label>
+                <input type="text" name="Brand" class="form-control" id="Brand" data-rule="minlen:4" data-msg="Please enter the brand name" placeholder="Enter the brand of the shoe"/>
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <label for="Style">Style: </label>
+                <input type="text" class="form-control" name="Style" id="Style" data-rule="minlen:3" data-msg="Please enter the style of the sneaker" placeholder="Enter the style of the shoe"/>
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <label for="Color">Color: </label>
+                <input type="text" class="form-control" name="Color" id="Color" data-rule="minlen:3" data-msg="Please enter the color of your sneakers" placeholder="Enter the color of the shoe" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                  <label for="Price">Price: </label>
+                  <input type="number" class="form-control" name="Price" id="Price" data-rule="minlen:2" data-msg="Please enter the price you paid" placeholder="Enter the price of the shoe" />
+                  <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <label for="Date">Date purchased: </label>
+                <input type="date" class="form-control" name="Date" id="Date" data-rule="minlen:1" data-msg="Please enter the date you purchased your sneakers" />
+                <div class="validation"></div>
+              </div>
+              <div class="text-center"><button type="submit" id="btn" class="btn" value="Submit">Add New Sneakers</button></div>
+            </fieldset>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-5 col-md-push-2">
+          <br>
+          <br>
+          <img src="img/sneaker.gif" height="350">
+        </div>
+        <div></div>
+  
+        </div>
+      </div>
+    </section>
+
+  <!--==========================
+  Subscribe Section
+  ============================-->
+  <section id="subscribe">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-8">
+          <h3 class="subscribe-title">Subscribe For Updates</h3>
+          <p class="subscribe-text">Stayed up to date with the latest developments - be the first to hear about our upcoming ICO!</p>
+        </div>
+        <a class="subscribe-btn" href="#" data-target="#login" data-toggle="modal">Subscribe</a>
+
+        <div id="login" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            
+            <div class="modal-content">
+              <div class="modal-body">
+                <button data-dismiss="modal" class="close">&times;</button>
+                <h4>Login</h4>
+                <form>
+                  <input type="text" class="username form-control" placeholder="Enter your email address here"/>
+                  <input class="subscribe-btn" type="submit" value="Subscribe" />
+                </form>
+              </div>
+            </div>
+          </div>  
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!--==========================
+  Footer
+============================-->
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="copyright">
+            &copy; Copyright <strong>Imperial Theme</strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
+            -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- Required JavaScript Libraries -->
+  <!-- <script src="lib/jquery/jquery.min.js"></script> -->
+  <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/lib/superfish/hoverIntent.js"></script>
+  <script src="/lib/superfish/superfish.min.js"></script>
+  <script src="/lib/morphext/morphext.min.js"></script>
+  <script src="/lib/wow/wow.min.js"></script>
+  <script src="/lib/stickyjs/sticky.js"></script>
+  <script src="/lib/easing/easing.js"></script>
+
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="js/custom.js"></script>
+
+  <script src="/contactform/contactform.js"></script>
+  <!-- <script src="/contactform/contactform.php"></script> -->
+  <script type="text/javascript" src="/my_js.js"></script>
+  <script type="text/javascript" src="/my_sneakers.json"></script>
+
+
+</body>
+
+</html>
