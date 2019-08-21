@@ -74,7 +74,7 @@ $("#sneaker-table").tabulator({
       {title:"Style", field:"Style", validator:["string","required","minLength:4"]},
       {title:"Color", field:"Color", align:"left", validator:["string","required","minLength:3"]},
       {title:"Price", field:"Price", validator:["required","integer", "min:0"]},
-      {title:"Date", field:"Date", sorter:"date", validator:"required"},
+      {title:"Date", field:"Date", sorter:"Date", validator:"required"},
   ],  
         
 });
